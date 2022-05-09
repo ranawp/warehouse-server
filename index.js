@@ -26,6 +26,7 @@ async function run() {
             res.send(inventories)
         })
 
+        //api for single inventory 
         app.get('/inventory/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) }
@@ -44,9 +45,8 @@ async function run() {
         app.delete('/inventory/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
-            const result = await inventoryCollection.deleteOne(query)
-            res.send(result);
-
+            const deleteResult = await inventoryCollection.deleteOne(query)
+            res.send(deleteResult);
         })
 
     }
